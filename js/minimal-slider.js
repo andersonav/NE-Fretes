@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).ready(function () {
   if ($('.slide-window')) {
 
     var slideNum = $('.slide').length - 1
@@ -13,16 +13,16 @@ $(document).ready(function(){
 
     var slideCurrent = 0
     var slideActiveBtn = 0
-    var rotationInterval = setInterval(function(){
-      slideCurrent++
-      if (slideCurrent > maxSlideNum) {
-        slideCurrent = 0
-      }
-      activation()
-      sliding()
-    }, 10000)
+    // var rotationInterval = setInterval(function () {
+    //   slideCurrent++
+    //   if (slideCurrent > maxSlideNum) {
+    //     slideCurrent = 0
+    //   }
+    //   activation()
+    //   sliding()
+    // }, 10000)
 
-    $(controlSlideBtnLeft).on('click', function(){
+    $(controlSlideBtnLeft).on('click', function () {
       resetInterval()
       slideCurrent--
       if (slideCurrent < 0) {
@@ -32,7 +32,7 @@ $(document).ready(function(){
       rotateArrow('left')
       sliding()
     })
-    $(controlSlideBtnRight).on('click', function(){
+    $(controlSlideBtnRight).on('click', function () {
       resetInterval()
       slideCurrent++
       if (slideCurrent > maxSlideNum) {
@@ -42,7 +42,7 @@ $(document).ready(function(){
       rotateArrow('right')
       sliding()
     })
-    $(controlSlideBtnList).on('click', function(){
+    $(controlSlideBtnList).on('click', function () {
       resetInterval()
       slideCurrent = $(controlSlideBtnList).index(this)
       activation()
@@ -52,7 +52,7 @@ $(document).ready(function(){
     function addSlideCtlBtn() {
       var slideCtlBtn = '<div class="slide-control-btn"><ul>'
       for (var i = 0; i <= maxSlideNum; i++) {
-        if (i==0) {
+        if (i == 0) {
           slideCtlBtn += '<li><a class="active"></a></li>'
         }
         else {
@@ -64,7 +64,7 @@ $(document).ready(function(){
     }
     function resetInterval() {
       clearInterval(rotationInterval)
-      rotationInterval = setInterval(function(){
+      rotationInterval = setInterval(function () {
         slideCurrent++
         if (slideCurrent > maxSlideNum) {
           slideCurrent = 0
@@ -75,7 +75,7 @@ $(document).ready(function(){
     }
     function activation() {
       slideActiveBtn = slideCurrent + 1
-      $( controlSlideBtnList + '.active' ).removeClass()
+      $(controlSlideBtnList + '.active').removeClass()
       $('.slide-control-btn ul li:nth-child(' + slideActiveBtn + ') a').addClass('active')
     }
     function rotateArrow(direction) {
